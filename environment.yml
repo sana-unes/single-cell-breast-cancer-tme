@@ -1,0 +1,39 @@
+# environment.yml
+# Create this environment with:  conda env create -f environment.yml
+# Activate it with:               conda activate sc-breast-cancer
+#
+# This covers everything actually imported across all three notebooks in
+# this repository (preprocessing/clustering, annotation benchmarking, and
+# the malignant signature analysis) — nothing installed "just in case."
+#
+# Versions are pinned deliberately, not left open-ended. An unpinned
+# numpy/scipy install caused a real, hard-to-diagnose incompatibility
+# during development (a private API scipy depended on was removed in a
+# newer numpy release) — this exact combination was installed fresh and
+# confirmed to import cleanly together, including the full scanpy import
+# chain that was the actual point of failure before.
+
+name: sc-breast-cancer
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.12
+  - pip
+  - jupyterlab
+  - ipykernel
+  - numpy=2.5.2
+  - pandas=3.0.5
+  - matplotlib=3.11.1
+  - seaborn=0.13.2
+  - scikit-learn=1.9.0
+  - scipy=1.18.0
+  - psutil=7.2.2
+  - pip:
+      - scanpy==1.12.3
+      - anndata==0.13.2
+      - celltypist==1.7.1
+      - harmonypy==2.0.0
+      - scrublet==0.2.3
+      - leidenalg==0.12.0
+      - igraph==1.0.0
